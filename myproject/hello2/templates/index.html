@@ -1,0 +1,15 @@
+<!-- to grab the layout template from layout layout.html and apply it here -->
+{% extends "layout.html" %} {% block body %}
+
+<!-- form that will take you to greet path once submitted with get method. not the greet.html but the /greet route in app.py -->
+<form action="/greet" method="get">
+  <input
+    type="text"
+    name="name"
+    autofocus
+    autocomplete="off"
+    placeholder="Name"
+  />
+  <button type="submit">Submit</button>
+</form>
+{% endblock body %}

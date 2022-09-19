@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {% for book in cart %}
+        <h2>{{ book[1] }}</h2>
+    {% endfor %}
+{% endblock body %}

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %} {% block body %}
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sport</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- it takes the keys from registrants when looped like this and the keys are the names -->
+    {% for name in registrants %}
+        <tr>
+        <!-- the name itself -->
+            <td>{{ name }}</td>
+        <!-- the value of the current key name -->
+            <td>{{ registrants[name] }}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock body %}

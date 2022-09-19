@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <input type="search" autocomplete="off" autofocus placeholder="Query">
+
+    <ul>
+    </ul>
+
+    <script>
+    // it will search on localhost search?q= with search query stored in variable q
+
+        let dynamicQuery = document.querySelector('input')
+        dynamicQuery.addEventListener('input', async function () {
+            let response = await fetch('/search?q=' + dynamicQuery.value)
+            // response.text brings the whole webpage of search.html since i'm returning template of search.html with /search route
+            // response.json() would work if i return jsonify(shows) with the route to /search but since i'm returning
+            // the template search.html with any /search starting route which is an html page, i can just append that page li here
+            // with response.text()
+
+            // won't be perfect as the page headers are also appended but won't be visible
+            let shows = await response.text()
+            document.querySelector('ul').innerHTML = shows
+    
+         //   let shows = await response.json()
+         //   console.log(shows)
+         //   let html = ''
+         //   shows.forEach(show => {
+         //       console.log(show)
+         //       show[0].replace('<', '&lt;').replace('&', '&amp;');
+         //       html += `<li>${show}</li>`
+         //   })
+         //   document.querySelector('ul').innerHTML = html
+        })
+
+    </script>
+{% endblock body %}

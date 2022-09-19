@@ -1,0 +1,19 @@
+{% extends 'layout.html' %} {% block body %}
+<form action="/register" method="post">
+  <input
+    type="text"
+    name="name"
+    autocomplete="off"
+    autofocus
+    placeholder="Name"
+  />
+  <select name="sport">
+    <option value=""></option>
+    <!-- takes the variable sports from app.py -->
+    {% for sport in sports %}
+    <option value="{{ sport }}">{{ sport }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Register</button>
+</form>
+{% endblock body %}

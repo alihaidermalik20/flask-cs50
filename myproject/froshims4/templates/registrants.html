@@ -1,0 +1,25 @@
+{% extends 'layout.html' %} {% block body %}
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sport</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- SELECT * FROM registrants is passed here as registrants which gives an object -->
+    {% for registrant in registrants %}
+        <tr>
+            <td>{{ registrant[1] }}</td>
+            <td>{{ registrant[2] }}</td>
+            <td>
+            <!-- creating a form with deregister button for every person with their id as value which gets removed from db -->
+              <form action="/deregister" method="post">   
+                  <button name="id" type="submit" value="{{ registrant[0] }}">Deregister</button>   
+              </form> 
+            </td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock body %}
